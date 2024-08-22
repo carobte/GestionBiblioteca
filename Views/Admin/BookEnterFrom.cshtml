@@ -1,3 +1,6 @@
+@model GestionBiblioteca.Models.Book
+
+
 @{
     ViewData["Title"] = "BookEnterFrom";
 }
@@ -7,55 +10,51 @@
 <div class="container">
     <h1 class="text-white">@ViewData["Title"]</h1>
     <div class="row">
-        <div class="col-md-12">
-            <form class="bg-secondary" action="index.html" method="post">
+     <div class="col-md-12">
+            <form class="bg-secondary" asp-action="CreateBook" method="post">
                 <fieldset>
                     <legend class="text-dark fw-bold"><span class="number ">1</span> Book Information</legend>
                     
-                    <label class="text-white fw-bold" for="name">Book Title:</label>
-                    <input class="form-control" type="text" id="name" name="book_title" required>
+                    <label asp-for="Title" class="text-white fw-bold" >Book Title:</label>
+                    <input asp-for="Title" class="form-control" type="text"  required>
                     
-                    <label class="text-white fw-bold" for="author">Author:</label>
-                    <input class="form-control" type="text" id="author" name="book_author" required>
+                    <label asp-for="Author"  class="text-white fw-bold" for="author">Author:</label>
+                    <input asp-for="Author"class="form-control" type="text" required>
                     
-                    <label class="text-white fw-bold" for="isbn">ISBN:</label>
-                    <input class="form-control" type="text" id="isbn" name="book_isbn" required>
+                    <label asp-for="Isbn" class="text-white fw-bold" for="isbn">ISBN:</label>
+                    <input asp-for="Isbn" class="form-control" type="text" required>
                     
                 </fieldset>
 
                 <fieldset>
                     <legend class="text-dark fw-bold"><span class="number">2</span> Additional Details</legend>
                     
-                    <label class="text-white fw-bold" for="category">Category:</label>
-                    <select id="category" name="book_category" required>
+                    <label asp-for="Category" class="text-white fw-bold" for="category">Category:</label>
+                    <select asp-for="Category" id="category" required>
                         <option value="">Select a category</option>
-                        <optgroup label="Fiction">
                             <option value="science_fiction">Science Fiction</option>
                             <option value="fantasy">Fantasy</option>
                             <option value="mystery">Mystery</option>
                             <option value="romance">Romance</option>
                             <option value="historical">Historical</option>
-                        </optgroup>
-                        <optgroup label="Non-Fiction">
                             <option value="biography">Biography</option>
                             <option value="self_help">Self-Help</option>
                             <option value="business">Business</option>
                             <option value="health">Health</option>
                             <option value="education">Education</option>
-                        </optgroup>
                     </select>
                     
-                    <label class="text-white fw-bold" for="cover_image">Cover Image URL:</label>
-                    <input class="form-control" type="text" id="cover_image" name="book_cover_image" required>
+                    <label asp-for="Img_Url" class="text-white fw-bold" for="cover_image">Cover Image URL:</label>
+                    <input asp-for="Img_Url" class="form-control" type="text" required>
                     
-                    <label class="text-white fw-bold" for="stock">Stock:</label>
-                    <input class="form-control" type="number" id="stock" name="book_stock" min="0" required>
+                    <label asp-for="Availability" class="text-white fw-bold" for="availability">Availability</label>
+                    <input asp-for="Availability" class="form-control" type="text" required>
                     
                 </fieldset>
 
-                <button  type="submit">Enter</button>
+                <button  type="submit" value="CreateBook">Enter</button>
                 @Html.ActionLink("Cancel", "Index", "Admin", null, new { @class = "btn btn-danger btn-full-width" })
             </form>
-        </div>
+        </div> 
     </div>
 </div>
